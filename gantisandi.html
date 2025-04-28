@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganti Kata Sandi</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #C0FFC8, #60CCCC);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      width: 350px;
+      position: relative;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.2);
+      width: 90%;
+      margin-bottom: 15px;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 12px;
+      background-color: white;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-bottom: 15px;
+    }
+
+    .submit-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .notification {
+      display: none;
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      animation: fadein 0.5s ease;
+      z-index: 10;
+    }
+
+    .notification.success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .notification.error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translate(-50%, -20px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <div id="notification" class="notification"></div>
+
+    <h2>Buat Sandi Baru</h2>
+    <p>Udah ganti yang baru nih, jangan dilupain lagi ya!</p>
+
+    <input type="password" id="new-password" placeholder="Kata Sandi Baru">
+    <input type="password" id="confirm-password" placeholder="Konfirmasi Kata Sandi Baru">
+
+    <button type="button" class="submit-button" onclick="changePassword()">Simpan Password Baru</button>
+  </div>
+
+  <script>
+    function showNotif(message, type) {
+      const notification = document.getElementById('notification');
+      notification.innerText = message;
+      notification.className = `notification ${type}`;
+      notification.style.display = 'block';
+
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 3000);
+    }
+
+    function changePassword() {
+      const newPassword = document.getElementById('new-password').value.trim();
+      const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+      if (!newPassword || !confirmPassword) {
+        showNotif('Ada kolom yang belum kamu isi :(', 'error');
+      } else if (newPassword !== confirmPassword) {
+        showNotif('Kata sandi belum cocok :(', 'error');
+      } else {
+        showNotif('Yeay sandi kamu berhasil diubah!', 'success');
+
+        // Setelah sukses, misal mau redirect ke halaman login:
+        setTimeout(() => {
+          window.location.href = 'dashboard.html'; // Ganti URL sesuai kebutuhan
+        }, 1500);
+      }
+    }
+  </script>
+
+</body>
+</html>

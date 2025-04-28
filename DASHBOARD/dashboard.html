@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tugasaurus Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">🦖 Tugasaurus</div>
+      <nav>
+        <ul>
+          <li class="active">🏠 Halaman Utama</li>
+          <li>🗂 Halaman Tugas</li>
+          <li>📅 Kalender Tugas</li>
+          <li>📊 Analisis Tugas</li>
+          <li>⚙️ Pengaturan</li>
+          <li>❓ Help</li>
+        </ul>
+      </nav>
+      <div class="user">
+        <p>User Account</p>
+        <small>user@gmail.com</small>
+        <button class="logout">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard">
+      <header>
+        <button class="hamburger">☰</button>
+        <h1>Hallo Mahasiswa!</h1>
+        <p>Kelola tugas kamu di sini</p>
+        <div class="actions">
+          <input type="text" placeholder="🔍 Cari Tugas"/>
+          <button class="add-task">+ Tugas Baru</button>
+        </div>
+      </header>
+
+      <section class="task-summary">
+        <div class="card">Total Tugas<br><span>0</span></div>
+        <div class="card">Tugas Selesai<br><span>0</span></div>
+        <div class="card">Tugas Tertunda<br><span>0</span></div>
+      </section>
+
+      <section class="filters">
+        <p>Filter Tugas:</p>
+        <button>Paling Mendesak</button>
+        <button>Mendesak</button>
+        <button>Kurang</button>
+        <p>Urutkan:</p>
+        <button>Semua Tugas</button>
+        <button>Hari Ini</button>
+        <button>Minggu Ini</button>
+      </section>
+
+      <section class="calendar">
+        <h2>Kalender Tugas</h2>
+        <div class="calendar-nav">
+          <p>April 2025</p>
+          <div><button>&lt;</button><button>&gt;</button></div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Min</th><th>Sen</th><th>Sel</th><th>Rab</th><th>Kam</th><th>Jum</th><th>Sab</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>30</td><td>31</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+            <tr><td class="urgent">6<br><small>Kalkulus *</small></td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+          </tbody>
+        </table>
+        <p>* Ditandai bintang berarti paling mendesak</p>
+      </section>
+    </main>
+  </div>
+  <script src="dashboard.js"></script>
+</body>
+</html>

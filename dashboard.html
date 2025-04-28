@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Tugasaurus</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="logo_tugasaurus.png" alt="Logo">
+      <h2>Tugasaurus</h2>
+    </div>
+    <div class="menu">
+      <button>Halaman Utama</button>
+      <button>Halaman Tugas</button>
+      <button>Kalender Tugas</button>
+      <button>Analisis Tugas</button>
+      <button>Pengaturan</button>
+      <button>Bantuan</button>
+      <button>Tentang Kami</button>
+    </div>
+    <div class="profile">
+      <img src="https://via.placeholder.com/40" alt="Profile">
+      <div>
+        <div>Akun Pengguna</div>
+        <div style="font-size: 12px; color: gray;">user@example.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <div>
+        <h1>Hallo Mahasiswa!</h1>
+        <p>Kelola Tugas Kamu Disini</p>
+      </div>
+      <div>
+        <input type="text" placeholder="Cari Tugas...">
+        <button>+ Tugas Baru</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <h2>3</h2>
+        <p>Total Tugas</p>
+      </div>
+      <div class="card">
+        <h2>0</h2>
+        <p>Tugas Selesai</p>
+      </div>
+      <div class="card">
+        <h2>3</h2>
+        <p>Tugas Tertunda</p>
+      </div>
+    </div>
+
+    <div class="content-area">
+        <div class="left-side">
+          <div class="task-list">
+            <h2>Daftar Tugas Terbaru</h2>
+            <div class="task-card">
+              <strong>Basis Data</strong> - 30 April 2025
+            </div>
+            <div class="task-card">
+              <strong>Algoritma dan Struktur Data</strong> - 2 Mei 2025
+            </div>
+          </div>
+        </div>
+      
+        <div class="right-side">
+          <div class="filters">
+            <span>Filter Tugas :</span>
+            <button>Paling Mendesak</button>
+            <button>Mendesak</button>
+            <button>Kurang Mendesak</button>
+          </div>
+          <div class="sorts">
+            <span>Urutkan :</span>
+            <button>Semua Tugas</button>
+            <button>Hari Ini</button>
+            <button>Minggu Ini</button>
+          </div>
+        </div>
+      </div>      
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

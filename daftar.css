@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+  background: linear-gradient(to bottom, #C0FFC8, #60CCCC);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif; 
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.left-column {
+  flex: 1;
+  background: linear-gradient(to bottom, #C0FFC8, #60CCCC);
+  color: rgb(8, 8, 8);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+}
+
+.features {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.features h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.feature-item .icon {
+  font-size: 1.8rem;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+.feature-item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.feature-item p {
+  margin: 0.3rem 0 0;
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+
+.right-column {
+  flex: 1;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand {
+  margin-bottom: 0.2rem;
+  margin-top: 0.01rem;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.tagline {
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.tabs {
+  display: flex;
+  width: 80%;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab.active {
+  background: #ffffff; 
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: none;
+  font-weight: bold;
+}
+
+.login-card {
+  background:rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* border putih 30% transparan */
+  backdrop-filter: blur(10px);
+}
+
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+label {
+  font-weight: 500;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  padding: 0.6rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+}
+
+.options {
+  accent-color: #C0FFC8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.options a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.login-button {
+  padding: 0.7rem;
+  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9em;
+}
+
+.register-link a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara logo dan tulisan */
+  margin-bottom: 10px; /* Jarak ke bawah */
+}
+
+.logo-img {
+  width: 50px; /* Kecilkan ukuran logo */
+  height: auto;
+}
+
+.logo-text h1 {
+  font-size: 24px; /* Ukuran teks "Tugasaurus" */
+  margin: 0;
+}
+
+.logo-text p {
+  font-size: 14px; /* Ukuran tulisan kecil di bawah */
+  margin: 0;
+  color: #666; /* Abu-abu supaya ga terlalu mencolok */
+}

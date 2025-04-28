@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugasaurus - Masuk</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="container">
+    <div class="right-column">
+      <div class="logo-container"> 
+        <img src="logo_tugasaurus.png" alt="Tugasaurus Logo" class="logo-img">
+        <div class="logo-text">
+          <h1>Tugasaurus</h1>
+          <p>Urus semua tugasmu bareng Tugasaurus</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active">Masuk</button>
+        <button class="tab" onclick="window.location.href='haldaftar.html'">Daftar</button>
+      </div>
+
+      <div class="login-card">
+        <h2>Ayo Masuk ke Akun Kamu</h2>
+        <form>
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Masukkan Email">
+
+          <label for="password">Kata Sandi</label>
+          <input type="password" id="password" placeholder="Masukkan Kata Sandi">
+
+          <div class="options">
+            <label>
+              <input type="checkbox" id="show-password">
+              Tampilkan Kata Sandi
+            </label>
+            <a href="lupasandi.html">Lupa Kata Sandi?</a>
+          </div>
+
+          <button class="login-button" onclick="window.location.href='../DASHBOARD/dashboard.html'">Masuk</button>
+
+ 
+
+          <p class="register-link">Belum punya akun? <a href="haldaftar.html">Daftar</a></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Background abu-abu diisi fitur -->
+    <div class="left-column">
+      <div class="features">
+        <h2>Urus semua tugasmu</h2>
+
+        <div class="feature-item">
+          <div class="icon">📝</div>
+          <div>
+            <h3>Atur Prioritas</h3>
+            <p>Kelola tugas berdasarkan prioritas untuk meningkatkan produktivitas</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="icon">📅</div>
+          <div>
+            <h3>Tampilan Kalender</h3>
+            <p>Lihat semua tugas kamu dalam tampilan kalender yang intuitif</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="icon">📈</div>
+          <div>
+            <h3>Pantau Progres</h3>
+            <p>Analisis produktivitas dan kinerja kamu melalui dashboard</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

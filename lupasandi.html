@@ -180,22 +180,22 @@
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (emailValue === '') {
-    // Email kosong
+    // Email blm diisi
     notification.innerText = 'Tolong masukkan email terlebih dahulu.';
     notification.className = 'notification error';
   } else if (!emailRegex.test(emailValue)) {
-    // Format email tidak valid
+    // Format email yg salah
     notification.innerText = 'Format email tidak valid.';
     notification.className = 'notification error';
   } else {
-    // Email valid
-    notification.innerText = 'Kode berhasil dikirim!';
+    // Email udh bnr
+    notification.innerText = 'Yeay kode nya berhasil dikirim!';
     notification.className = 'notification success';
   }
 
   notification.style.display = 'block';
 
-  // Hilangkan notifikasi setelah 3 detik
+  // Durasi notif
   setTimeout(() => {
     notification.style.display = 'none';
   }, 3000);

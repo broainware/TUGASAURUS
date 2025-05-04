@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan Akun - Tugasaurus</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #C0FFC8, #60CCCC);
+      display: flex;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .profile-box {
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      font-size: 14px;
+    }
+
+    .profile-box img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .main-content h1 {
+      font-size: 24px;
+    }
+
+    .main-content p {
+      color: gray;
+      margin-bottom: 30px;
+    }
+
+    .setting-card {
+      background: #E7FAEC;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .setting-card img {
+      width: 70px;
+      align-self: center;
+      border-radius: 50%;
+      background: #ccc;
+      padding: 15px;
+    }
+
+    .setting-card input {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .setting-card button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <div class="logo">🪶 <span>Tugasaurus</span></div>
+      <div class="menu">
+        <button onclick="location.href='index.html'">🏠 Halaman Utama</button>
+        <button onclick="location.href='tugas.html'">📄 Halaman Tugas</button>
+        <button onclick="location.href='kalender.html'">📅 Kalender Tugas</button>
+        <button onclick="location.href='analisis.html'">📖 Analisis Tugas</button>
+        <button onclick="location.href='pengaturan.html'">⚙️ Pengaturan</button>
+        <button onclick="location.href='bantuan.html'">❓ Bantuan</button>
+        <button onclick="location.href='tentang.html'">👥 Tentang Kami</button>
+      </div>
+    </div>
+    <div class="profile-box">
+      <img src="" alt="">
+      <div>
+        <strong>Akun Pengguna</strong>
+        <p>user@example.com</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h1>Akun Pengguna</h1>
+    <p>Kelola Tugas Kamu Disini</p>
+    <div class="setting-card">
+      <img src="" alt="avatar">
+      <label>Nama Pengguna</label>
+      <input type="text" placeholder="example">
+      <label>Email</label>
+      <input type="email" placeholder="user@example.com">
+      <button>Keluar <span>↩️</span></button>
+      <button>Ganti Akun <span>👤</span></button>
+    </div>
+  </div>
+</body>
+</html>

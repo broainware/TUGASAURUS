@@ -136,10 +136,9 @@
         showNotif('Kata sandi belum cocok :(', 'error');
       } else {
         showNotif('Yeay sandi kamu berhasil diubah!', 'success');
-
-        // Setelah sukses, misal mau redirect ke halaman login:
+        
         setTimeout(() => {
-          window.location.href = 'dashboard.html'; // Ganti URL sesuai kebutuhan
+          window.location.href = 'dashboard.html'; 
         }, 1500);
       }
     }

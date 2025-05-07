@@ -13,6 +13,7 @@
     }
 
     body {
+      padding: 20px;
       background: linear-gradient(to bottom, #C0FFC8, #60CCCC);
       min-height: 100vh;
       display: flex;
@@ -26,6 +27,7 @@
       flex-direction: column;
       justify-content: space-between;
       border-right: 1px solid #ccc;
+      border-radius: 20px;
     }
 
     .logo {
@@ -63,18 +65,34 @@
       background: #e0e0e0;
     }
 
+    .profile-link {
+     text-decoration: none;
+     color: inherit;
+     display: block;
+    }
+
     .profile {
       display: flex;
       align-items: center;
       gap: 10px;
       font-size: 14px;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+
+    .profile:hover {
+      background: #f0f0f0;
+      cursor: pointer;
     }
 
     .profile img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: white;
+      background: #ccc;
     }
 
     .main-content {
@@ -177,7 +195,6 @@
       color: gray;
     }
 
-    /* Modal */
     .modal {
       position: fixed;
       z-index: 999;
@@ -210,6 +227,8 @@
       border: 1px solid #ccc;
     }
 
+    
+
     .modal-content button {
       padding: 8px 15px;
       border: none;
@@ -217,6 +236,95 @@
       font-weight: bold;
       cursor: pointer;
     }
+
+    .menu-link {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  display: block;
+  transition: background 0.3s;
+}
+
+.menu-link:hover {
+  background: #e0e0e0;
+}
+
+body.dark-mode {
+  background: linear-gradient(to bottom, #333, #60CCCC);
+  color: white;
+}
+
+body.dark-mode .sidebar {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #444;
+}
+
+body.dark-mode .menu button {
+  background: #444;
+  color: white;
+}
+
+body.dark-mode .menu button:hover {
+  background: #60CCCC;
+}
+
+body.dark-mode .profile {
+  background: #444;
+  color: white;
+}
+
+body.dark-mode .main-inner p {
+  color: #CCCCCC;
+}
+
+.card, .filter-box, .task-box {
+  color: black;
+}
+
+.kotak-hijau {
+  background-color: #d8fbd8; /* warna hijau muda */
+  color: black; 
+  padding: 20px;
+  border-radius: 12px;
+}
+
+body.dark-mode .modal-content {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+body.dark-mode .modal-content input,
+body.dark-mode .modal-content select {
+  background-color: #666C;
+  color: white;
+  border: 1px solid #C0FFC8;
+}
+
+body.dark-mode .modal-content button {
+  background-color: #C0FFC8;
+  color: black;
+}
+
+body.dark-mode ::placeholder {
+  color: #ffffff;
+  opacity: 10; 
+}
+
+body.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.8;
+}
+
+body.dark-mode .search-add input::placeholder {
+  color: black;
+}
+
+
+
+
   </style>
 </head>
 <body>
@@ -227,26 +335,26 @@
         <h2>Tugasaurus</h2>
       </div>
       <div class="menu">
-        <div class="menu">
-          <button onclick="location.href='index.html'">Halaman Utama</button>
-          <button onclick="location.href='halamantugas.html'">Halaman Tugas</button>
-          <button onclick="location.href='kalender.html'">Kalender Tugas</button>
-          <button onclick="location.href='analisis.html'">Analisis Tugas</button>
-          <button onclick="location.href='pengaturan.html'">Pengaturan</button>
-          <button onclick="location.href='bantuan.html'">Bantuan</button>
-          <button onclick="location.href='tentang.html'">Tentang Kami</button>
+        <button onclick="location.href='dashboard.html'">Halaman Utama</button>
+        <button onclick="location.href='halamantugas.html'">Halaman Tugas</button>
+        <button onclick="location.href='kalender.html'">Kalender Tugas</button>
+        <button onclick="location.href='analisis.html'">Analisis Tugas</button>
+        <button onclick="location.href='pengaturan.html'">Pengaturan</button>
+        <button onclick="location.href='bantuanhtml'">Bantuan</button>
+        <button onclick="location.href='tentang.html'">Tentang Kami</button>
+      </div>
+    </div>
+    <a href="akun.html" class="profile-link">
+      <div class="profile">
+        <img src="https://via.placeholder.com/40" alt="Profile">
+        <div>
+          <div>Akun Pengguna</div>
+          <div style="font-size: 12px; color: gray;">user@example.com</div>
         </div>
-        
       </div>
-    </div>
-    <div class="profile">
-      <img src="https://via.placeholder.com/40" alt="Profile">
-      <div>
-        <div>Akun Pengguna</div>
-        <div style="font-size: 12px; color: gray;">user@example.com</div>
-      </div>
-    </div>
+    </a>
   </div>
+  
 
   <div class="main-content">
     <div class="header">
@@ -261,9 +369,9 @@
     </div>
 
     <div class="stats">
-      <div class="card"><h2>3</h2><p>Total Tugas</p></div>
-      <div class="card"><h2>0</h2><p>Tugas Selesai</p></div>
-      <div class="card"><h2>3</h2><p>Tugas Tertunda</p></div>
+      <div class="card"><h2 id="totalTugas">0</h2><p>Total Tugas</p></div>
+      <div class="card"><h2 id="tugasSelesai">0</h2><p>Tugas Selesai</p></div>
+      <div class="card"><h2 id="tugasTertunda">0</h2><p>Tugas Tertunda</p></div>
     </div>
 
     <div class="filters">
@@ -280,7 +388,7 @@
       <button>Minggu Ini</button>
     </div>
 
-    <div class="task-list">
+    <div class="kotak-hijau">
       <h2>Daftar Tugas Terbaru</h2>
     </div>
   </div>
@@ -289,34 +397,17 @@
   <div id="modal" class="modal">
     <div class="modal-content">
       <h2>Tambah Tugas Baru</h2>
-      <input type="text" placeholder="Masukkan Mata Kuliah">
-      <input type="number" placeholder="SKS">
-      <input type="text" placeholder="Nama Tugas">
-      <input type="date">
-      <select>
-        <option value="0">0/10</option>
-        <option value="1">1/10</option>
-        <option value="2">2/10</option>
-        <option value="3">3/10</option>
-        <option value="4">4/10</option>
-        <option value="5">5/10</option>
-        <option value="6">6/10</option>
-        <option value="7">7/10</option>
-        <option value="8">8/10</option>
-        <option value="9">9/10</option>
-        <option value="10">10/10</option>
-      </select>
-      <select>
-        <option>0 Hari</option>
-        <option>1 Hari</option>
-        <option>2 Hari</option>
-        <option>3 Hari</option>
-        <option>4 Hari</option>
-        <option>5 Hari</option>
-      </select>
+      <input id="mataKuliah" type="text" placeholder="Masukkan Mata Kuliah">
+      <input id="sks" type="number" placeholder="SKS">
+      <input id="namaTugas" type="text" placeholder="Nama Tugas">
+      <input id="tanggalTugas" type="date">
+
+      <select id="skorPrioritas"></select>
+      <p id="sisaHariText" style="margin: 0 0 10px 0; font-weight: bold;"></p>
+
       <div style="display: flex; justify-content: flex-end; gap: 10px;">
         <button onclick="closeModal()">Batal</button>
-        <button>Simpan</button>
+        <button onclick="simpanTugas()">Simpan</button>
       </div>
     </div>
   </div>
@@ -325,19 +416,70 @@
     const modal = document.getElementById("modal");
     const openBtn = document.getElementById("openModal");
 
-    openBtn.addEventListener("click", () => {
+    openBtn.onclick = () => {
       modal.style.display = "flex";
-    });
+    };
 
     function closeModal() {
       modal.style.display = "none";
     }
 
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
+    function simpanTugas() {
+      alert("Tugas disimpan (simulasi)");
+      closeModal();
     }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const skorSelect = document.getElementById("skorPrioritas");
+      for (let i = 0; i <= 5; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = `${i}/5`;
+        skorSelect.appendChild(option);
+      }
+    });
+
+    const tanggalInput = document.getElementById("tanggalTugas");
+    const sisaHariText = document.getElementById("sisaHariText");
+
+    tanggalInput.addEventListener("input", () => {
+      const selectedDate = new Date(tanggalInput.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const selisihMs = selectedDate - today;
+      const selisihHari = Math.ceil(selisihMs / (1000 * 60 * 60 * 24));
+
+      if (isNaN(selisihHari)) {
+        sisaHariText.textContent = "";
+      } else if (selisihHari < 0) {
+        sisaHariText.textContent = "\u26A0\uFE0F Deadline sudah lewat!";
+        sisaHariText.style.color = "red";
+      } else if (selisihHari === 0) {
+        sisaHariText.textContent = "\u23F0 Deadline hari ini!";
+        sisaHariText.style.color = "orange";
+      } else {
+        sisaHariText.textContent = `\ud83d\uddd3\ufe0f Sisa ${selisihHari} hari lagi`;
+        sisaHariText.style.color = "black";
+      }
+    });
   </script>
+
+<script>
+  // Cek preferensi mode gelap dari localStorage
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  });
+</script>
+
 </body>
 </html>

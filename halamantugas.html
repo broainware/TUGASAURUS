@@ -20,37 +20,38 @@
 
     .sidebar {
       width: 250px;
-      background: #B7F4C7;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.2);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 20px;
-      border-right: 2px solid #7DD4AE;
-    }
-
-    .sidebar h2 {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 20px;
+      border-right: 1px solid #ccc;
+      border-radius: 20px;
     }
 
     .sidebar .menu {
       margin-top: 30px;
     }
 
-    .sidebar button {
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px;
-      margin-bottom: 10px;
-      font-size: 16px;
-      border-radius: 10px;
-      cursor: pointer;
+    .menu button {
+     background: white;
+     border: none;
+     padding: 10px;
+     border-radius: 10px;
+     cursor: pointer;
+     font-weight: bold;
+     text-align: left;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     transition: background 0.3s;
     }
+
+    .menu button:hover {
+     background: #e0e0e0;
+    }
+
+
 
     .sidebar button.active {
       background: #ffffff;
@@ -63,6 +64,29 @@
       gap: 10px;
       font-size: 14px;
       margin-top: auto;
+    }
+
+    .profile-link {
+     text-decoration: none;
+     color: inherit;
+     display: block;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+
+    .profile:hover {
+      background: #f0f0f0;
+      cursor: pointer;
     }
 
     .main {
@@ -144,9 +168,194 @@
   </style>
 </head>
 <body>
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan Akun - Tugasaurus</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #C0FFC8, #60CCCC);
+      display: flex;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .sidebar {
+      width: 250px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid #ccc;
+      border-radius: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 40px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu button {
+      background: white;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+
+    .menu button:hover {
+      background: #e0e0e0;
+    }
+
+    .profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .main-content h1 {
+      font-size: 24px;
+    }
+
+    .main-content p {
+      color: gray;
+      margin-bottom: 30px;
+    }
+
+    .setting-card {
+      background: #E7FAEC;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .setting-card img {
+      width: 70px;
+      align-self: center;
+      border-radius: 50%;
+      background: #ccc;
+      padding: 15px;
+    }
+
+    .setting-card input {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .setting-card button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    body.dark-mode {
+  background: linear-gradient(to bottom, #333, #60CCCC);
+  color: white;
+}
+
+body.dark-mode .sidebar {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #444;
+}
+
+body.dark-mode .menu button {
+  background: #444;
+  color: white;
+}
+
+body.dark-mode .menu button:hover {
+  background: #60CCCC;
+}
+
+body.dark-mode .profile {
+  background: #444;
+  color: white;
+}
+
+body.dark-mode .main-inner p {
+  color: #CCCCCC;
+}
+
+body.dark-mode .task-card,
+body.dark-mode .task-card * {
+  color: black !important;
+}
+
+/* Untuk tombol "Tandai Selesai" dengan latar belakang hitam dan teks putih */
+body.dark-mode .task-card button {
+  background: black !important;
+  color: white !important;
+}
+
+
+
+  </style>
+</head>
+<body>
   <div class="sidebar">
     <div>
-      <h2>✅ Tugasaurus</h2>
+      <div class="logo">
+        <img src="logo_tugasaurus.png" alt="Logo">
+        <h2>Tugasaurus</h2>
+      </div>
       <div class="menu">
         <button onclick="location.href='dashboard.html'">Halaman Utama</button>
         <button onclick="location.href='halamantugas.html'">Halaman Tugas</button>
@@ -155,13 +364,19 @@
         <button onclick="location.href='pengaturan.html'">Pengaturan</button>
         <button onclick="location.href='bantuan.html'">Bantuan</button>
         <button onclick="location.href='tentang.html'">Tentang Kami</button>
+      </div>      
+    </div>
+    <a href="akun.html" class="profile-link">
+      <div class="profile">
+        <img src="https://via.placeholder.com/40" alt="Profile">
+        <div>
+          <div>Akun Pengguna</div>
+          <div style="font-size: 12px; color: gray;">user@example.com</div>
+        </div>
       </div>
-    </div>
-    <div class="profile">
-      <span>👤 Akun Pengguna<br><small>user@example.com</small></span>
-    </div>
+    </a>
   </div>
-
+  
   <div class="main">
     <div class="main-header">
       <div>
@@ -173,9 +388,9 @@
 
     <div class="filter-group">
       <span>Filter Tugas :</span>
-      <button>⚠️ Paling Mendesak</button>
-      <button>⭐ Mendesak</button>
-      <button>⊖ Kurang Mendesak</button>
+      <button>Paling Mendesak</button>
+      <button>Mendesak</button>
+      <button>Kurang Mendesak</button>
     </div>
 
     <div class="sort-group">
@@ -188,37 +403,50 @@
     <div class="task-list">
       <div class="task-card">
         <div class="tools">
-          <strong>⚠️ Paling Mendesak</strong>
-          <span>✏️ 🗑️</span>
+          <strong>Paling Mendesak</strong>
+          <span></span>
         </div>
         <h3>Kalkulus</h3>
-        <p>🗓️ Tenggat: 24/04/2025</p>
+        <p>Tenggat: 24/04/2025</p>
         <p>Tingkat Kesulitan 8/10</p>
-        <button>✔️ Tandai Selesai</button>
+        <button>Tandai Selesai</button>
       </div>
 
       <div class="task-card">
         <div class="tools">
-          <strong>⭐ Mendesak</strong>
-          <span>✏️ 🗑️</span>
+          <strong>Mendesak</strong>
+          <span></span>
         </div>
         <h3>Basis Data</h3>
-        <p>🗓️ Tenggat: 25/04/2025</p>
+        <p>Tenggat: 25/04/2025</p>
         <p>Tingkat Kesulitan 7/10</p>
-        <button>✔️ Tandai Selesai</button>
+        <button>Tandai Selesai</button>
       </div>
+
+      
 
       <div class="task-card">
         <div class="tools">
-          <strong>⊖ Kurang Mendesak</strong>
-          <span>✏️ 🗑️</span>
+          <strong>Kurang Mendesak</strong>
+          <span></span>
         </div>
         <h3>Algoritma dan Struktur Data</h3>
-        <p>🗓️ Tenggat: 26/04/2025</p>
+        <p>Tenggat: 26/04/2025</p>
         <p>Tingkat Kesulitan 6/10</p>
-        <button>✔️ Tandai Selesai</button>
+        <button>Tandai Selesai</button>
       </div>
     </div>
   </div>
+
+  <script>
+    // Cek preferensi mode gelap dari localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+  </script>
+  
 </body>
 </html>

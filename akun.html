@@ -21,21 +21,24 @@
 
     .sidebar {
       width: 250px;
-      background: rgba(255, 255, 255, 0.3);
       padding: 20px;
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.2);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border-right: 1px solid #ccc;
+      border-radius: 20px;
     }
 
     .logo {
-      font-size: 20px;
-      font-weight: bold;
       display: flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 40px;
     }
 
     .menu {
@@ -45,30 +48,47 @@
     }
 
     .menu button {
-      display: flex;
-      align-items: center;
-      gap: 10px;
       background: white;
       border: none;
       padding: 10px;
       border-radius: 10px;
-      font-weight: bold;
       cursor: pointer;
+      font-weight: bold;
       text-align: left;
-    }
-
-    .profile-box {
-      background: white;
-      padding: 10px;
-      border-radius: 12px;
       display: flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      font-size: 14px;
+      transition: background 0.3s;
     }
 
-    .profile-box img {
+    .menu button:hover {
+      background: #e0e0e0;
+    }
+
+    .profile-link {
+     text-decoration: none;
+     color: inherit;
+     display: block;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+
+    .profile:hover {
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+
+    .profile img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -78,10 +98,15 @@
     .main-content {
       flex: 1;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .main-content h1 {
       font-size: 24px;
+      margin-bottom: 10px;
     }
 
     .main-content p {
@@ -93,11 +118,13 @@
       background: #E7FAEC;
       padding: 30px;
       border-radius: 20px;
-      max-width: 500px;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 10px;
     }
 
     .setting-card img {
@@ -127,12 +154,98 @@
       justify-content: space-between;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+
+     .logout-btn {
+     padding: 12px;
+     border: none;
+     border-radius: 10px;
+     background: white;
+     font-weight: bold;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+     transition: background 0.3s, transform 0.1s;
+    }
+
+     .logout-btn:hover {
+     background: #ffcccc;
+    }
+
+     .logout-btn:active {
+     transform: scale(0.97);
+     background: #ffaaaa;
+    }
+
+    .readonly-field {
+     padding: 12px;
+     border-radius: 10px;
+     background: #f9f9f9;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+     font-weight: bold;
+    }
+
+    .field-display {
+     padding: 12px;
+     border-radius: 10px;
+     background: #f8f8f8;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode {
+  background: linear-gradient(to bottom, #333, #60CCCC);
+  color: white;
+}
+
+body.dark-mode .sidebar {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #444;
+}
+
+body.dark-mode .menu button {
+  background: #444;
+  color: white;
+}
+
+body.dark-mode .menu button:hover {
+  background: #60CCCC;
+}
+
+body.dark-mode .profile {
+  background: #444;
+  color: white;
+}
+
+body.dark-mode .main-inner p {
+  color: #CCCCCC;
+}
+
+body.dark-mode .setting-card {
+  background: rgba(0, 0, 0, 0.3); /* hitam semi transparan */
+}
+
+body.dark-mode .readonly-field {
+  color: black;
+}
+
+body.dark-mode .main-content p {
+  color: #ffff;
+}
+
+
+
+
+
   </style>
 </head>
 <body>
   <div class="sidebar">
     <div>
-      <div class="logo">🪶 <span>Tugasaurus</span></div>
+      <div class="logo">
+        <img src="logo_tugasaurus.png" alt="Logo">
+        <h2>Tugasaurus</h2>
+      </div>
       <div class="menu">
         <button onclick="location.href='dashboard.html'">Halaman Utama</button>
         <button onclick="location.href='halamantugas.html'">Halaman Tugas</button>
@@ -143,27 +256,58 @@
         <button onclick="location.href='tentang.html'">Tentang Kami</button>
       </div>
     </div>
-    <div class="profile-box">
-      <img src="" alt="">
-      <div>
-        <strong>Akun Pengguna</strong>
-        <p>user@example.com</p>
+
+    <a href="akun.html" class="profile-link">
+      <div class="profile">
+        <img src="https://via.placeholder.com/40" alt="Profile">
+        <div>
+          <div>Akun Pengguna</div>
+          <div style="font-size: 12px; color: gray;">user@example.com</div>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="main-content">
+    <div class="main-inner"></div>
     <h1>Akun Pengguna</h1>
     <p>Kelola Tugas Kamu Disini</p>
     <div class="setting-card">
       <img src="" alt="avatar">
       <label>Nama Pengguna</label>
-      <input type="text" placeholder="example">
+      <div class="readonly-field" id="user-name">Memuat...</div>
+
       <label>Email</label>
-      <input type="email" placeholder="user@example.com">
-      <button>Keluar <span>↩️</span></button>
-      <button>Ganti Akun <span>👤</span></button>
+      <div class="readonly-field" id="user-email">Memuat...</div>
+
+      <button class="logout-btn" onclick="window.location.href='index.html'">Keluar <span>↩</span></button>
+
     </div>
   </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch('/api/user') // ganti sesuai endpoint kamu
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("user-name").textContent = data.nama;
+          document.getElementById("user-email").textContent = data.email;
+        })
+        .catch(err => {
+          console.error("Gagal mengambil data user:", err);
+        });
+    });
+  </script>
+  <script>
+    // Cek preferensi mode gelap dari localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+  </script>
+  
 </body>
 </html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalender Tugas</title>
+  <style>
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+  background: linear-gradient(to bottom, #C0FFC8, #60CCCC);
+  display: flex;
+  height: 100vh;
+  padding: 20px;
+  overflow: hidden;
+}
+
+
+    .sidebar {
+      width: 250px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid #ccc;
+      border-radius: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 40px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu button {
+      background: white;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+
+    .menu button:hover {
+      background: #e0e0e0;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+
+    .main-content {
+  flex: 1;
+  padding: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Biar tidak lebih tinggi dari viewport */
+}
+
+
+    .main-content h1 {
+      font-size: 24px;
+    }
+
+    .main-content p {
+      color: gray;
+      margin-bottom: 30px;
+    }
+
+    .setting-card {
+      background: #E7FAEC;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .setting-card img {
+      width: 70px;
+      align-self: center;
+      border-radius: 50%;
+      background: #ccc;
+      padding: 15px;
+    }
+
+    .setting-card input {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .setting-card button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .content {
+      flex-grow: 1;
+      padding: 2rem;
+    }
+    .filter-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .filter-label {
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    .filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .filter-buttons button {
+      padding: 0.6rem 1rem;
+      border-radius: 0.6rem;
+      border: none;
+      background: white;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+    .calendar {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background: #f6fff8;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow-y: auto;
+  flex: 1; /* Agar dia isi sisa tinggi .main-content */
+  min-height: 0; /* Ini penting untuk scroll fleksibel */
+  max-width: 100%;
+  width: 100%;
+
+}
+
+
+    .calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ccc; /* garis bawah */
+  margin-bottom: 1rem; /* jarak setelah garis */
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.day {
+  padding: 0.4rem;
+  font-size: 0.85rem;
+  min-height: 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+    .day.today {
+      background: #a4ecdf;
+      font-weight: bold;
+    }
+    .task-list {
+      margin-top: 1rem;
+    }
+    .filter-buttons button.active {
+  background-color: #7cdacc;
+  color: white;
+  font-weight: bold;
+}.day .icon {
+  font-size: 0.7rem;
+  display: block;
+  margin-top: 4px;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 8px;
+  width: fit-content;
+  margin-inline: auto;
+}
+.icon.paling {
+  background: #ff4c4c;
+}
+.icon.mendesak {
+  background: #ffa500;
+}
+.icon.kurang {
+  background: #5cb85c;
+}
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+    
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <div class="logo">
+        <img src="logo_tugasaurus.png" alt="Logo">
+        <h2>Tugasaurus</h2>
+      </div>
+      <div class="menu">
+        <button onclick="location.href='dashboard.html'">Halaman Utama</button>
+        <button onclick="location.href='halamantugas.html'">Halaman Tugas</button>
+        <button onclick="location.href='kalender.html'">Kalender Tugas</button>
+        <button onclick="location.href='analisis.html'">Analisis Tugas</button>
+        <button onclick="location.href='pengaturan.html'">Pengaturan</button>
+        <button onclick="location.href='bantuan.html'">Bantuan</button>
+        <button onclick="location.href='tentang.html'">Tentang Kami</button>
+      </div>
+    </div>
+    <div class="profile">
+      <img src="https://via.placeholder.com/40" alt="Profile">
+      <div>
+        <div>Akun Pengguna</div>
+        <div style="font-size: 12px; color: gray;">user@example.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h1>Kalender Tugas</h1>
+    <p>Kelola Tugas Kamu Disini</p>
+    <div class="filter-section">
+      <span class="filter-label">Filter Tugas:</span>
+      <div class="filter-buttons">
+        <button>Paling Mendesak</button>
+        <button>Mendesak</button>
+        <button>Kurang Mendesak</button>
+      </div>
+    </div>
+
+    <div class="filter-section" style="margin-top: 1rem;">
+      <span class="filter-label">Urutkan:</span>
+      <div class="filter-buttons">
+        <button>Semua Tugas</button>
+        <button>Hari Ini</button>
+        <button>Minggu Ini</button>
+      </div>
+    </div>
+    <div class="calendar">
+      <div class="calendar-header">
+        <button onclick="changeMonth(-1)">&#8592;</button>
+        <h3 id="monthYear">April 2025</h3>
+        <button onclick="changeMonth(1)">&#8594;</button>
+      </div>
+      <div class="calendar-weekdays">
+        <div>Sen</div>
+        <div>Sel</div>
+        <div>Rab</div>
+        <div>Kam</div>
+        <div>Jum</div>
+        <div>Sab</div>
+        <div>Min</div>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+      <div class="task-list" id="taskList"></div>
+      
+    </div>
+  </div>
+   
+
+  <script>
+    const calendarGrid = document.getElementById("calendarGrid");
+    const taskList = document.getElementById("taskList");
+    const monthYearLabel = document.getElementById("monthYear");
+
+    const tasks = {}; // Awalnya kosong
+
+    let currentDate = new Date(); // Otomatis ambil bulan dan tahun saat ini
+    let currentFilter = "Semua Tugas"; // Default filter
+    let currentSort = "Semua Tugas"; // Default sort
+
+    function updateFilteredTasksDisplay() {
+  const filteredEntries = Object.entries(tasks).filter(([date, task]) => {
+    if (currentFilter === "Semua Tugas") return true;
+    return task.urgency === currentFilter;
+  });
+
+  if (Object.keys(tasks).length === 0) {
+    // Kalau belum ada tugas sama sekali
+    taskList.innerHTML = `<p style="color: gray; font-style: italic;">Tidak ada tugas.</p>`;
+  } else if (filteredEntries.length === 0) {
+    // Kalau ada tugas, tapi tidak sesuai filter
+    taskList.innerHTML = `<p style="color: gray; font-style: italic;">Tidak ada tugas yang sesuai filter.</p>`;
+  } else {
+    // Kalau ada tugas yang cocok dengan filter
+    taskList.innerHTML = `<ul style="padding-left: 1rem;">` +
+      filteredEntries.map(([date, task]) => {
+        const [year, month, day] = date.split('-');
+        return `<li>${parseInt(day)} ${new Date(year, month).toLocaleString('id-ID', { month: 'long' })} ${year}: <b>${task.title}</b> (${task.urgency})</li>`;
+      }).join("") +
+      `</ul>`;
+  }
+}
+
+
+    function renderCalendar() {
+        calendarGrid.innerHTML = "";
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        let firstDay = new Date(year, month, 1).getDay();
+firstDay = (firstDay + 6) % 7; // ubah agar Senin = 0, Minggu = 6
+
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        monthYearLabel.innerText = `${currentDate.toLocaleString('id-ID', { month: 'long' })} ${year}`;
+
+        for (let i = 0; i < firstDay; i++) {
+            const emptyCell = document.createElement("div");
+            emptyCell.className = "day";
+            calendarGrid.appendChild(emptyCell);
+        }
+
+
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dayDiv = document.createElement("div");
+            dayDiv.className = "day";
+            if (
+                i === new Date().getDate() &&
+                month === new Date().getMonth() &&
+                year === new Date().getFullYear()
+            ) {
+                dayDiv.classList.add("today");
+            }
+            dayDiv.innerText = i;
+
+// Cek apakah ada tugas pada tanggal ini
+const taskKey = `${year}-${month}-${i}`;
+const task = tasks[taskKey];
+
+            dayDiv.onclick = () => showTasks(year, month, i);
+            calendarGrid.appendChild(dayDiv);
+        }
+    }
+
+    function showTasks(year, month, day) {
+        const key = `${year}-${month}-${day}`;
+        let filteredTasks = Object.assign({}, tasks);
+
+        if (currentFilter !== "Semua Tugas") {
+            filteredTasks = Object.fromEntries(
+                Object.entries(tasks).filter(([date, task]) => task.urgency === currentFilter)
+            );
+        }
+
+        const dateKey = `${year}-${month}-${day}`;
+        const taskInfo = filteredTasks[dateKey];
+
+        if (currentSort !== "Semua Tugas") {
+            const today = new Date();
+            const targetDate = new Date(year, month, day);
+
+            if (currentSort === "Hari Ini" && targetDate.toDateString() !== today.toDateString()) {
+                taskList.innerHTML = `<p>${day} ${currentDate.toLocaleString('id-ID', { month: 'long' })} ${year}: Tidak ada tugas</p>`;
+                return;
+            }
+
+            if (currentSort === "Minggu Ini" && (today.getTime() - targetDate.getTime()) > (7 * 24 * 60 * 60 * 1000)) {
+                taskList.innerHTML = `<p>${day} ${currentDate.toLocaleString('id-ID', { month: 'long' })} ${year}: Tidak ada tugas</p>`;
+                return;
+            }
+        }
+
+        taskList.innerHTML = taskInfo
+            ? `<p>${day} ${currentDate.toLocaleString('id-ID', { month: 'long' })} ${year}: ${taskInfo.title} (${taskInfo.urgency})</p>`
+            : `<p>${day} ${currentDate.toLocaleString('id-ID', { month: 'long' })} ${year}: Tidak ada tugas</p>`;
+    }
+
+    function changeMonth(offset) {
+        currentDate.setMonth(currentDate.getMonth() + offset);
+        renderCalendar();
+    }
+
+    // Filter and sorting functions
+    function setFilter(filter) {
+        currentFilter = filter;
+        renderCalendar();
+    }
+
+    function setSort(sort) {
+        currentSort = sort;
+        renderCalendar();
+    }
+    function addTask(year, month, day, title, urgency) {
+  const key = `${year}-${month}-${day}`;
+  tasks[key] = { title, urgency };
+  renderCalendar();
+  updateFilteredTasksDisplay();
+}
+
+    // Filter urgensi
+document.querySelectorAll('.filter-section:nth-of-type(1) .filter-buttons button').forEach(button => {
+  button.addEventListener('click', () => {
+    const isActive = button.classList.contains('active');
+
+    // Hapus semua tombol aktif dulu
+    document.querySelectorAll('.filter-section:nth-of-type(1) .filter-buttons button')
+      .forEach(btn => btn.classList.remove('active'));
+
+    if (isActive) {
+      currentFilter = "Semua Tugas"; // Reset filter
+    } else {
+      button.classList.add('active');
+      currentFilter = button.innerText;
+    }
+
+    renderCalendar();
+    updateFilteredTasksDisplay();
+
+  });
+});
+
+// Filter waktu
+document.querySelectorAll('.filter-section:nth-of-type(2) .filter-buttons button').forEach(button => {
+  button.addEventListener('click', () => {
+    const isActive = button.classList.contains('active');
+
+    // Hapus semua tombol aktif dulu
+    document.querySelectorAll('.filter-section:nth-of-type(2) .filter-buttons button')
+      .forEach(btn => btn.classList.remove('active'));
+
+    if (isActive) {
+      currentSort = "Semua Tugas"; // Reset sort
+    } else {
+      button.classList.add('active');
+      currentSort = button.innerText;
+    }
+
+  
+  });
+});
+
+    
+
+renderCalendar();
+updateFilteredTasksDisplay(); // ← INI PENTING!
+
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id"> 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -321,7 +321,102 @@ body.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
 body.dark-mode .search-add input::placeholder {
   color: black;
 }
+ /* Contoh untuk layar dengan lebar maksimal 768px (tablet) */
+@media (max-width: 768px) {
+  .sidebar {
+    /* Gaya baru untuk sidebar di tablet, misalnya: */
+    width: 100%; /* Membuatnya selebar layar */
+    flex-direction: row; /* Mengatur item menu jadi horizontal (mungkin perlu penyesuaian lebih lanjut) */
+    justify-content: space-around; /* Menata item menu */
+    height: auto; /* Tinggi otomatis */
+    position: static; /* Tidak fixed lagi */
+    border-right: none; /* Hilangkan border kanan */
+    border-bottom: 1px solid #ccc; /* Tambahkan border bawah */
+    border-radius: 0; /* Hilangkan border radius */
+    padding: 10px 0; /* Kurangi padding */
+  }
 
+  .logo {
+    /* Sembunyikan logo atau perkecil */
+    display: none;
+  }
+
+  .menu {
+    flex-direction: row; /* Atur menu horizontal */
+    justify-content: space-around; /* Distribusikan item menu */
+    gap: 5px; /* Atur jarak antar item */
+  }
+
+  .menu button {
+    padding: 8px; /* Perkecil padding tombol */
+    font-size: smaller; /* Perkecil ukuran font */
+    border-radius: 5px; /* Perkecil border radius */
+  }
+
+  .main-content {
+    padding: 20px; /* Kurangi padding konten utama */
+    margin-left: 0; /* Hilangkan margin kiri */
+  }
+
+  .stats {
+    flex-direction: column; /* Atur statistik menjadi satu kolom */
+    gap: 15px; /* Tambah jarak antar item statistik */
+  }
+
+  .search-add {
+    flex-direction: column; /* Atur pencarian dan tombol tambah jadi satu kolom */
+    gap: 10px;
+  }
+
+  .search-add input {
+    width: 100%; /* Lebar pencarian jadi penuh */
+  }
+}
+
+/* Contoh untuk layar dengan lebar maksimal 576px (ponsel) */
+@media (max-width: 576px) {
+  .menu button {
+    font-size: x-small; /* Lebih perkecil font tombol menu */
+    padding: 5px;
+  }
+}
+.hamburger-btn {
+  /* Gaya tombol hamburger (sembunyikan di desktop, tampilkan di mobile) */
+}
+
+.hamburger-line {
+  /* Gaya garis-garis di dalam tombol hamburger */
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(1) {
+  /* Gaya saat tombol aktif (untuk animasi X) */
+}
+
+/* ... gaya untuk garis lainnya ... */
+
+.overlay {
+  /* Gaya overlay (transparan di awal, gelap saat menu terbuka) */
+}
+
+.overlay.active {
+  /* Gaya overlay saat aktif */
+}
+
+@media (min-width: 769px) {
+  .hamburger-btn, .overlay {
+    display: none !important; /* Sembunyikan di desktop */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    /* Gaya sidebar untuk mobile (misalnya, fixed dan di luar layar) */
+  }
+
+  .sidebar.show {
+    /* Gaya sidebar saat ditampilkan */
+  }
+}
 
 
 
@@ -401,7 +496,7 @@ body.dark-mode .search-add input::placeholder {
       <input id="sks" type="number" placeholder="SKS">
       <input id="namaTugas" type="text" placeholder="Nama Tugas">
       <input id="tanggalTugas" type="date">
-
+ 
       <select id="skorPrioritas"></select>
       <p id="sisaHariText" style="margin: 0 0 10px 0; font-weight: bold;"></p>
 
@@ -411,6 +506,13 @@ body.dark-mode .search-add input::placeholder {
       </div>
     </div>
   </div>
+
+  <button id="hamburgerBtn" class="hamburger-btn">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+<div id="overlay" class="overlay"></div>
 
   <script>
     const modal = document.getElementById("modal");
@@ -444,6 +546,24 @@ body.dark-mode .search-add input::placeholder {
         skorSelect.appendChild(option);
       }
     });
+
+    const sidebar = document.querySelector('.sidebar');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const overlay = document.getElementById('overlay');
+
+   hamburgerBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
+    hamburgerBtn.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.classList.toggle('overflow-hidden'); // Mencegah scrolling latar belakang
+   });
+
+   overlay.addEventListener('click', () => {
+     sidebar.classList.remove('show');
+     hamburgerBtn.classList.remove('active');
+     overlay.classList.remove('active');
+     document.body.classList.remove('overflow-hidden');
+   });
 
     const tanggalInput = document.getElementById("tanggalTugas");
     const sisaHariText = document.getElementById("sisaHariText");
